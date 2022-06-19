@@ -1,0 +1,182 @@
+/*
+Bhavesh And Chandan fruits shipping company
+*/
+
+import java.util.Scanner;
+class Fruits{
+	//specifications of fruits
+	public String name;
+	private double weight;
+	private double price_per_kg;
+	
+	//Constructor used when all specifications are given
+	Fruits(String name, double weight, double price_per_kg){
+		this.name = name;
+		this.weight = weight;
+		this.price_per_kg = price_per_kg;
+	}
+	void Fruits_costing(String name, double weight){
+		System.out.println("     ------------------------------------------------------");
+		    Scanner sc = new Scanner(System.in);
+		    System.out.println("     ------------------------------------------------------");
+			System.out.print("       Name of costomer: ");
+			String Name_of_costomer = sc.nextLine();
+		    System.out.println("     ------------------------------------------------------");
+		    System.out.println("     Fruit Name           Total Cost Rs");
+			System.out.println("     ------------------------------------------------------");
+			System.out.println("     "+name+"             Rs "+this.price_per_kg*weight);
+			//System.out.println();
+			System.out.println();
+			System.out.println("     Thank you for ordering with us!!");
+			System.out.println();
+			System.out.println("     Please Visit Again!!!!");
+			System.out.println("     ******************************************************************************************");
+		    System.out.println("     ********************* BHAVESH AND CHANDAN  FRUITS SHIPPING COMPANY ***********************");
+		    System.out.println("     ******************************************************************************************");
+			System.out.println();
+	}
+}
+
+//creating child class of fruits by using inheritance
+class Mango extends Fruits{
+	String season;
+	
+	//Creating constructor of class Mango
+	Mango(String name, double weight, double price_per_kg){
+		super(name, weight, price_per_kg);  // calling parent class constructor
+		//this.season = season;
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("       Specifications                         Details");
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("     Name of Mango breed :                   "+name);
+		System.out.println("     Minimum quantity to be ordered          "+weight+" kg");
+		System.out.println("     Cost of 1 kg of "+name+" Mango is:      "+price_per_kg);
+	}
+	
+	void season_mango(){
+		System.out.println("     *** Mango is  seasonal fruit  which is majorly  available in  summer season");
+		System.out.println("     *** we have Alphanso and Ratnagiri Mango which is famous all over the world");
+	}
+}
+
+//Creating another child class of Fruits
+class Apple extends Fruits{
+	String season;
+	
+	//creating constructor of class Apple
+	Apple(String name, double weight, double price_per_kg){
+		super(name, weight, price_per_kg);
+		//this.season = season;
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("       Specifications                         Details");
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("     Name of Apple breed :                   "+name);
+		System.out.println("     Minimum weight to placed your order:    "+weight);
+		System.out.println("     Cost of 1 kg of "+name+" Apple is:      "+price_per_kg);
+	}
+	
+	void season_apple(){
+		System.out.println("     *** Normally the apples are ready for harvest from September-October except"); 
+		System.out.println("         in the Nilgiris where the season is from April to July.");
+		System.out.println("     *** We have a  stock of specially  kashmiri  apples which  are harvested in");
+		System.out.println("        winter season");
+	}
+} 
+
+//Fruits company main class
+class FruitsCompanyMain{
+	public static void main(String args[]){
+		System.out.println();
+		System.out.println("     ******************************************************************************************");
+		System.out.println("     **************** WELCOME TO BHAVESH AND CHANDAN FRUITS SHIPPING COMPANY ******************");
+		System.out.println("     ******************************************************************************************");
+		//System.out.println("Here are some fruits that we sell to costomers");
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("Would you like to see our Fruits menu ?");
+		//System.out.println("Choose between YES or NO ");
+		//System.out.println("Choose 2 if NO");
+		//String A = sc.nextLine();
+		//if( A == "YES"){
+		
+		System.out.println("     Below data contains all information about Fruits that we sell");
+		System.out.println();
+		
+		System.out.println("     ==================== All About Mango =====================");
+		Mango m1 = new Mango("Alphanso", 1, 150);     //Calling Constructor
+		System.out.println();
+		Mango m2 = new Mango("Kesar   ", 1, 100);     //Calling constructor
+		System.out.println();
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("     Details about Mango Fruit -->");
+		System.out.println("     ------------------------------------------------------");
+		m1.season_mango();
+		System.out.println();
+		
+		System.out.println("     ==================== All About Apple =====================");
+		Apple A1 = new Apple("Kashmiri", 1, 250);    //Calling Constructor
+		System.out.println();
+		Apple A2 = new Apple("Imported", 1, 200);    //Calling Constructor
+		System.out.println();
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("     Deatils about Apple Fruit -->");
+		System.out.println("     ------------------------------------------------------");
+		A1.season_apple();
+		System.out.println();
+		//}else{
+			//System.out.println("Here you can placed your order directly !!");
+		//}
+		
+		System.out.println("     ******************************************************************************************");
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("     What would you like to order?");
+		System.out.println("     ------------------------------------------------------");
+		System.out.println("     Choose --> 1 for Alphanso Mango.");
+		System.out.println("     Choose --> 2 for Ratnagiri Mango.");
+		System.out.println("     Choose --> 3 for Kashmiri Apple.");
+		System.out.println("     Choose --> 4 for Imported Apple.");
+		System.out.println();
+		
+		int cost_Alphonso = 150;    // this is price of 1 kg of mango
+	    int cost_Ratnagiri = 100;   // price per kg
+	    int cost_Kashmiri = 250;    // price per kg
+	    int cost_Imported = 200;    // price per kg
+		
+		System.out.print("     ***** Enter your option here --> ");
+		Scanner sc = new Scanner(System.in);
+		int option = sc.nextInt();
+		System.out.println();
+		
+		//Here we are using if-else loop for Coustomer input
+		if(option>0 && option<=4){
+			System.out.println("     How much quantity in kg would you like to order ?  ");
+			System.out.println();
+		    System.out.print("     ***** Quantity ----------------> ");
+			
+			int quantity = sc.nextInt();
+			
+			//System.out.println("Enter your name ");
+			//String Name_of_costomer;
+			//String Name_of_costomer = sc.nextLine();
+			
+			
+			if(option == 1){
+				//System.out.println("Enter your name ");
+			    //String Name_of_costomer = sc.nextLine();
+				m1.Fruits_costing(m1.name, quantity);
+				
+			}else if(option == 2){
+				m2.Fruits_costing(m2.name, quantity);
+				
+			}else if(option == 3){
+				A1.Fruits_costing(A1.name, quantity);
+				
+			}else{
+				A2.Fruits_costing(A2.name, quantity);
+			}
+		}else {
+			System.out.println("     Please enter valid input");
+		}
+		
+			
+	}
+}
