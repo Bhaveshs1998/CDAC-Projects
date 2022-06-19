@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Page</title>
+</head>
+<style>
+    body{
+        background-size: 100%;
+        /* background-position: 50%; */
+    }
+    body h1{
+        align-content: center;
+        /* padding-left: 20%; */
+        padding-top: 10%;
+    }
+    #register, h2{
+        align-content: center;
+        padding-left: 20%;
+    }
+    /* body h3{ 
+        align-content: center;
+        padding-top: 3%;
+        padding-top: 5%;
+    }*/
+</style>
+<body id="back" background="Registered.jpg">
+
+<h1 id="register">Congratulations !!!
+    <br>
+    Hi.. <span id="email"></span>
+    You are registered successfully,
+    <br>
+    <button onclick="logout()" >logout</button>
+    <!-- <button onclick="//127.0.0.1:5500/WPT%20Final%20Mini%20Project/index_login.html">Login Here</button> -->
+    <h2><a href="index_login.html">Click Here To Login</a></h2>
+</h1>
+<!-- <h3>Click below to go back to Login Page</h3> -->
+ <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("email").innerHTML = sessionStorage.getItem("Email");
+
+    });
+    function logout(){
+
+      sessionStorage.clear();
+      window.location.replace("http://127.0.0.1:5501/index.html");
+    }
+ </script>   
+</body>
+</html>

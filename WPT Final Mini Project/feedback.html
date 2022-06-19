@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback | Vision real estate</title>
+  <link rel="stylesheet" href="feedback.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>V</span>ISION <span>R</span>EAL <span>E</span>STATE</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="index.html" data-after="Home">Home</a></li>
+            
+            <!-- <li><a href="index_SignUp.html" target="_blank" data-after="SignUp">SignUp</a></li> -->
+            <!-- <li><a href="#Login" target="_blank" data-after="Login">Login</a></li> -->
+            <li><a href="index_login.html" target="_blank" data-after="Login">Account</a></li>
+            <li><a href="feedback.html" target="_blank" data-after="Feedback">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <div class="wrapper">
+    <header>Send us a Feedback</header>
+    <form class="form-group">
+      <div class="dbl-field">
+        <div class="field">
+          <input type="text" name="name" placeholder="Enter your name" id="name" width="100%">
+          <i class='fas fa-user'></i>
+        </div>
+        <div class="field">
+          <input type="text" name="email" placeholder="Enter your email" id="email" width="auto" >
+          <i class='fas fa-envelope'></i>
+        </div>
+      </div>
+      <div class="dbl-field">
+        <div class="field">
+          <input type="text" name="phone" placeholder="Enter your phone" id="phone">
+          <i class='fas fa-phone-alt'></i>
+        </div>
+        <div class="field">
+          <input type="text" name="website" placeholder="Service you got from us" id="website">
+          <!-- <i class='fas fa-globe'></i> -->
+          <!-- <i class="fa-solid fa-highlighter"></i> -->
+          <i class="fa-solid fa-highlighter"></i>
+
+        </div>
+      </div>
+      <div class="message">
+        <textarea placeholder="Write your message" name="message" id="message"></textarea>
+        <i class="material-icons">message</i>
+      </div>
+      
+        <!-- <form method="get" action="ThankYou.html">
+            <button type="submit">Send Feedback</button>
+        </form> -->
+        <!-- <a href="ThankYou.html">
+            <input type="submit"/>
+          </a> -->
+        <!-- <button  type="submit" onclick="ThankYou.html">Send Feedback</button> -->
+        <!-- <button onclick="window.location.href = 'ThankYou.html';"> Click here </button> -->
+        <!-- <form action="ThankYou.html">
+            <button type="submit">Click here</button>
+         </form> -->
+         <!-- ========================================== -->
+         <br>
+        <p style="color: red;" id="alert"></p>
+      </form>
+      <div class="button-area">
+      <button onclick="saveFeedback()" >Send Feedback
+        <!-- <a href="ThankYou.html" >Send Feedback</a> -->
+       </button></div>
+        <!-- ============================================= -->
+        <!-- <a href="ThankYou.html" type="button" class="cta"><button>Submit Feedback</button> </a> -->
+        
+        
+      </div>
+      
+    
+  </div>
+  
+</body>
+<script>
+  function saveFeedback(){
+    var name = document.querySelector("#name").value;
+    var email=document.querySelector("#email").value;
+    var phone=document.querySelector("#phone").value;
+    var website=document.querySelector("#website").value;
+    var message=document.querySelector("#message").value;
+
+    ///
+    var temp = localStorage.getItem('feedbacks');
+    var feedbacks = JSON.parse(temp);
+    if(name == "" || email == ""  || phone == ""  || website == ""  || message == ""  ){
+      document.getElementById('alert').innerHTML="Please enter all the given values";
+      return;
+    }
+    else{
+      document.getElementById('alert').innerHTML="";
+    }
+    var arr = [name,email,phone,website,message];
+    feedbacks.push(arr);
+    localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+     // localStorage.setItem('feedbacks',JSON.stringify(feedbacks));
+     console.log(JSON.parse(localStorage.getItem('feedbacks')));
+     window.location.replace("http://127.0.0.1:5501/ThankYou.html");
+    // window.location.href = "http://127.0.0.1:5501/ThankYou.html";
+  }
+</script>
+</html>

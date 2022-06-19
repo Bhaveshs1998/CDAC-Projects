@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="SignUp.css" />
+  </head>
+  <body>  
+    <h1>SignUp</h1>
+    <input type="text" name="" placeholder="Username" />
+    <input type="text" name="" list="tech" />
+    <datalist id="tech">
+      <option>Real Estate</option>
+      <option>Town Planning</option>
+      <option>Property Management</option>
+      <option>Water Supply and Management</option>
+    </datalist>
+    <!-- action="action_page.html" -->
+    <form action="action_page.html">
+      <input  type required="email" name="" placeholder="Email" id="Email" />
+      <input
+        type
+        required="password1"
+        name=""
+        placeholder="password" id="password1"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      />
+      <input
+        type
+        required="password2" name=""
+        placeholder="Confirm Password"
+          id="password2"
+      />
+      <!-- <button  id="submit" disabled  >SignUp</button> -->
+      <form method="get" action="/page2">
+        <button type="submit" id="submit">SignUp</button>
+    </form>
+    </form>
+    <script>
+      // Function to check Whether both passwords
+      // is same or not.
+      window.addEventListener("DOMContentLoaded", () => {
+        var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+        
+        
+          
+        const passwords = document.querySelector("#password2");
+        passwords.addEventListener("blur", function abc() {
+            console.log("submit");
+          let password1 = document.querySelector("#password1").value;
+          let password2 = document.querySelector("#password2").value;
+          
+          if (!password1.match(mediumRegex)){
+            alert("Please enter strong Password");
+          return; 
+          } 
+          if (!password2.match(mediumRegex)){
+             alert("Password and confirm password should be same");
+            return; 
+          }
+        
+          if (password1 == "") {
+            alert("Password and confirm password should be same");
+           return;
+          }
+          
+          else if (password2 == "") {
+            alert("Please enter confirm password");
+            return;
+           }
+          
+          else if (password1 != password2) {
+            alert("\nPassword did not match: Please try again...");
+            return ;
+           
+          }
+          else{
+            
+           
+            document.querySelector("#submit").disabled=false;
+           // console.log("submit1.....................");
+         // window.location.href = "http://127.0.0.1:5500/WPT%20Final%20Mini%20Project/action_page.html";
+         // window.redirect = "http://127.0.0.1:5500/WPT%20Final%20Mini%20Project/action_page.html";
+        //  console.log("submit1.....................");
+        //window.location.pathname ="action_page.html";
+        var eml = document.querySelector("#Email").value;
+        var pss = document.querySelector("#password1").value;
+           sessionStorage.setItem("Email", eml);
+           localStorage.setItem(eml,pss);
+           console.log(sessionStorage.getItem("Email"));
+          }
+       
+        });
+      });
+    </script>
+  </body>
+</html>
+<!-- // -->

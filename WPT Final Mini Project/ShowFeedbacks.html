@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registered Page</title>
+</head>
+<style>
+
+</style>
+<body id="back" background="pexels-s-migaj-747964.jpg">
+    <section id="header">
+        <div class="header container">
+          <div class="nav-bar">
+            <div class="brand">
+              <a href="#hero">
+                <h1><span>V</span>ISION <span>R</span>EAL <span>E</span>STATE</h1>
+              </a>
+            </div>
+            <div class="nav-list">
+              <div class="hamburger">
+                <div class="bar"></div>
+              </div>
+              <ul>
+                <li><a href="index.html" data-after="Home">Home</a></li>
+                
+                <!-- <li><a href="index_SignUp.html" target="_blank" data-after="SignUp">SignUp</a></li> -->
+                <!-- <li><a href="#Login" target="_blank" data-after="Login">Login</a></li> -->
+                <li><a href="index_login.html" target="_blank" data-after="Login">Account</a></li>
+                <li><a href="feedback.html" target="_blank" data-after="Feedback">Feedback</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>   
+
+
+      <section id="services">
+        <div class="services container">
+          <div class="service-top">
+<div id="table-wrapper">
+</div>
+</div>
+</div>
+</section>
+
+<script >
+   window.addEventListener("DOMContentLoaded",  function GenerateTable() {
+        //Build an array containing Customer records.
+        
+        var feedbacks = JSON.parse(localStorage.getItem('feedbacks'));
+        //document.getElementById('feedbacks').innerHTML = customers.toString();
+        console.log( feedbacks );
+        //Create a HTML Table element.
+        var table = document.createElement("TABLE");
+        table.border = "1";
+        table.className ="fl-table";
+
+        //Get the count of columns.
+       var columnCount = feedbacks[0].length;
+
+        //Add the header row.
+        var hdr = ["Name","Email","Phone","Service","Feedback"];
+        var row = table.insertRow(-1);
+        for (var i = 0; i < columnCount; i++) {
+            var headerCell = document.createElement("TH");
+            headerCell.innerHTML = hdr[i];
+            row.appendChild(headerCell);
+        }
+
+        //Add the data rows.
+        for (var i = 0; i < feedbacks.length; i++) {
+            row = table.insertRow(-1);
+            for (var j = 0; j < columnCount; j++) {
+                var cell = row.insertCell(-1);
+                cell.innerHTML = feedbacks[i][j];
+            }
+        }
+
+        var dvTable = document.getElementById("table-wrapper");
+        dvTable.innerHTML = "";
+        dvTable.appendChild(table);
+    });
+</script>
+   
+</body>
+</html>
